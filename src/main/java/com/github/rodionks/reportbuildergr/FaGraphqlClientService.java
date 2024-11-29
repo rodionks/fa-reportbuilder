@@ -99,14 +99,15 @@ public class FaGraphqlClientService {
     public List<List<String>> executeTransactionsQuery(List<Long> ids, String startDate, String endDate) {
         //todo: consider to implement caching of data to avoid multiple requests to the server
         //todo: consider building the query with the codegen and use DGS client
+        //todo: this service use redundant schema for fetching data. It should be refactored to fetch only required data
 
         //        TransactionsGraphQLQuery query = TransactionsGraphQLQuery.newRequest()
-//                .ids(ids.stream().map(String::valueOf).toList())
-//                .startDate(startDate)
-//                .endDate(endDate)
-//                .build();
-//        TransactionsProjectionRoot<BaseSubProjectionNode<?, ?>, BaseSubProjectionNode<?, ?>> projection = new TransactionsProjectionRoot<>();
-//        DgsGraphQlClient dgsClient = DgsGraphQlClient.create(graphQlClient);
+        //                .ids(ids.stream().map(String::valueOf).toList())
+        //                .startDate(startDate)
+        //                .endDate(endDate)
+        //                .build();
+        //        TransactionsProjectionRoot<BaseSubProjectionNode<?, ?>, BaseSubProjectionNode<?, ?>> projection = new TransactionsProjectionRoot<>();
+        //        DgsGraphQlClient dgsClient = DgsGraphQlClient.create(graphQlClient);
 
         HttpGraphQlClient graphQlClient = HttpGraphQlClient.create(this.webClient);
 
