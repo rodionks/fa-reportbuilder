@@ -1,0 +1,87 @@
+schema {
+    query: Query
+}
+
+type Query {
+    transactions(ids: [ID], startDate: String, endDate: String): [Portfolio]
+}
+
+type Portfolio {
+    parentPortfolio: PortfolioDetails
+    transactions(status: String, startDate: String, endDate: String): [Transaction]
+}
+
+type PortfolioDetails {
+    name: String
+    shortName: String
+    type: PortfolioType
+    primaryContact: Contact
+    currency: Currency
+    portfolioReport: PortfolioReport
+}
+
+type PortfolioReport {
+    units: Float
+}
+
+type PortfolioType {
+    code: String
+    name: String
+}
+
+type Contact {
+    name: String
+    contactId: ID
+}
+
+type Currency {
+    code: String
+    name: String
+}
+
+type Transaction {
+    portfolio: PortfolioDetails
+    type: TransactionType
+    transactionDate: String
+    settlementDate: String
+    paymentDate: String
+    tradeTime: String
+    extId: String
+    security: Security
+    currency: Currency
+    account: Account
+    quantity: Float
+    unitPrice: Float
+    cost: Float
+    cost2: Float
+    tax: Float
+    tax2: Float
+    totalCost: Float
+    tradeAmount: Float
+    cashFlow: Float
+    cashFlowInAccountCurrency: Float
+    cashFlowInPortfolioCurrency: Float
+    extInfo: String
+}
+
+type TransactionType {
+    code: String
+    name: String
+}
+
+type Security {
+    name: String
+    code: String
+    isinCode: String
+    type: SecurityType
+}
+
+type SecurityType {
+    name: String
+    code: String
+}
+
+type Account {
+    name: String
+    number: String
+}

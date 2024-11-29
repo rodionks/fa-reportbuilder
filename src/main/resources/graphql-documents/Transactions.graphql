@@ -1,0 +1,60 @@
+query Transactions($ids: [Long], $startDate: String, $endDate: String) {
+    portfoliosByIds( ids: $ids ) {
+        transactions(status:"OK", startDate: $startDate, endDate: $endDate) {
+            portfolio:parentPortfolio {
+                name
+                shortName
+                type {
+                    code
+                    name
+                }
+                primaryContact {
+                    name
+                    contactId
+                }
+                currency {
+                    code:securityCode
+                    name
+                }
+            }
+            type {
+                code: typeCode
+                name: typeName
+            }
+            transactionDate
+            settlementDate
+            paymentDate
+            tradeTime
+            extId
+            security {
+                name
+                code:securityCode
+                isinCode
+                type {
+                    name
+                    code
+                }
+            }
+            currency {
+                name
+                code:securityCode
+            }
+            account {
+                name
+                number
+            }
+            quantity: amount
+            unitPrice:unitPriceView
+            cost
+            cost2
+            tax
+            tax2
+            totalCost
+            tradeAmount
+            cashFlow
+            cashFlowInAccountCurrency
+            cashFlowInPortfolioCurrency
+            extInfo
+        }
+    }
+}
